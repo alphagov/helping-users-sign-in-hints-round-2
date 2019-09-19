@@ -10,9 +10,7 @@
   <h1>{{idpName}} has verified your identity</h1>
 
 
-  <p>You can sign in wherever you see the GOV.UK Verify logo with your {{idpName}} identity account username and password.</p>
-
-	<p>You can now you can continue to {{serviceNameLower}}.</p>
+  <p>You can sign in wherever you see the GOV.UK Verify logo with your {{idpName}} identity account.</p>
 
   <details role="group">
     <summary role="button" aria-controls="details-content-0" aria-expanded="false">
@@ -39,19 +37,21 @@
       </ul>
     </div>
   </details>
-  <br><br>
 
 <form id="start-page-form" class="js-validate" novalidate="novalidate" action="/hub/third-cycle-matching{{formQuery}}" accept-charset="UTF-8" method="get">
   <div class="form-group">
+    <br>
+    <div class="actions">
+      <input class="button" id="next-button" type="submit" value="Continue to {{serviceNameLower}}">
+    </div>
+    <br>
     <fieldset>
       <div class="multiple-choice">
-        <input id="radio-2" type="checkbox" name="rememberIdp" value="true">
-        <label for="radio-2">Remember {{idpName}} for this device</label>
+        <input id="radio-2" type="checkbox" name="rememberIdp" value="true" checked="true">
+        <label for="radio-2">Remember {{idpName}} on this device</label>
       </div>
     </fieldset>
-    <div class="actions">
-      <input class="button" id="next-button" type="submit" value="Continue">
-    </div>
+
   </div>
 </form>
 
