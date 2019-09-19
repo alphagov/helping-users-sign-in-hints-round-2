@@ -180,3 +180,29 @@ $path: "/public/images/";
 a:visited{
   color: #005ea5;
 }
+
+.button-secondary, .button-secondary-with-advice {
+    background-color: #dee0e2;
+
+    padding: .526315em .789473em .263157em;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-box-shadow: 0 2px 0 #b5babe;
+    -moz-box-shadow: 0 2px 0 #b5babe;
+    box-shadow: 0 2px 0 #b5babe;
+    font-size: 1em;
+    line-height: 1.25;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    color: #0b0c0c;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+.button-secondary:visited{
+  color: #000000;
+}

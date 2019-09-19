@@ -26,12 +26,7 @@
     </div>
     <div class="grid-row">
       <div class="column-two-thirds">
-        <div class="hint-logo">
-          <img src="/public/images/idp-logos/{{idpSlug}}.png" alt="{{idpName}}">
-        </div>
-        <div class="hint-logo">
-          <img class="verify-hub-logo" src="/public/images/govuk-verify-small-black-text.png" alt="" style="width:60%" >
-        </div>
+        {% include "includes/idp-and-verify-logos.html" %}
       </div>
     </div>
     <br><br>
@@ -39,16 +34,15 @@
       <div class="column-full">
         <form method="POST" action="{{idpRoot}}/sign-in{{formQuery}}"  style='float:left;'>
           <input type="hidden" name="idpChoice" value="{{idpSlug}}">
-          <button class="button">Sign in with {{ idpName }}</button>
+          <button class="button">Continue with {{ idpName }}</button>
         </form>
-        <p style='float:left;margin-left:25px;padding-top:5px;'>
-          <span>Not you?</span>
-          {% if data['requestId'] == 'dbs' %}
-            <a href="/hub/eidas-interstitial">Choose another way to sign in</a>.
-          {% else %}
-            <a href="/hub/verify-signin-picker">Choose another way to sign in</a>.
-          {% endif %}
-        </p>
+
+        {% if data['requestId'] == 'dbs' %}
+          <a href="/hub/eidas-interstitial" class="button-secondary">Choose another way to sign in</a>
+        {% else %}
+          <a href="/hub/verify-signin-picker" class="button-secondary">Choose another way to sign in</a>
+        {% endif %}
+
       </div>
     </div>
   {% endif %}
