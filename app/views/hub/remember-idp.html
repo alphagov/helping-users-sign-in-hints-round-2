@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  {% include "includes/available-languages.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <!-- <h1 class="heading-large">Are you using a shared computer?</h1> -->
+      <h1 class="heading-large">Do you want to remember {{idpName}} for this device?</h1>
+    </div>
+  </div>
+
+  {{ formData|safe }}
+
+  {% if data['idpChoice'] != undefined %}
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <!-- <p>If this is a shared computer...</p> -->
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="form-group">
+          <fieldset>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="rememberIdp" value="true">
+              <label for="radio-2">Yes</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="rememberIdp" value="false">
+              <label for="radio-3">No</label>
+            </div>
+          </fieldset>
+
+        </div>
+          {% if data['requestId'] == "cysp" %}
+            <form method="POST" action="/service/check-state-pension-end"  style='float:left;'>
+          {% else %}
+            <form method="POST" action="/service/dbs-end"  style='float:left;'>
+          {% endif %}
+          <input type="hidden" name="idpChoice" value="{{idpSlug}}">
+          <button class="button">Continue to {{serviceNameLower}}</button>
+        </form>
+      </div>
+    </div>
+  {% endif %}
+
+</main>
+
+{% endblock %}

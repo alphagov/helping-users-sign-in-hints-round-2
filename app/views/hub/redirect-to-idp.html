@@ -21,7 +21,11 @@
 
       <p>You'll then be able to {{serviceNameLower}}.</p>
 
-      <form action="{{idpRoot}}sign-up{{formQuery}}">
+      {% if data['liveConsent'] == 'true' %}
+        <form action="/hub/loading">
+      {% else %}
+        <form action="{{idpRoot}}sign-up{{formQuery}}">
+      {% endif %}
 
         <div class="form-group">
           <div class="actions">

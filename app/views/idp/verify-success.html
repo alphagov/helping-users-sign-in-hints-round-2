@@ -37,7 +37,11 @@
 
       <p>Access government services that use GOV.UK Verify with your username, password and the security code we send to your mobile phone.</p>
 
-			<form id="main-form" action="/hub/verify-success{{formQuery}}" method="get">
+      {% if requestId == "dbs" %}
+			   <form id="main-form" action="/hub/waiting-for-match" method="get">
+      {% else %}
+        <form id="main-form" action="/hub/verify-success" method="get">
+      {% endif %}
 				<input type="hidden" name="usersLOA" value="1">
 				<div class='form-group'>
           <input type="hidden" name="userHasIdpAccount" value="true">

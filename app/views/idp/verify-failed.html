@@ -36,17 +36,17 @@
         <h3>You can still use your {{idpName}} identity account to access government services that don’t require the extra evidence.</h3>
         </br>
       {% endif %}
-        
+
       <p><img class="sign-in-logo" src="/public/images/govuk-verify-small-black-text.png" style="max-height:50px;" alt=""></p>
-				
-			<form id="main-form" action="/hub/verify-failed{{formQuery}}" method="get">
+
+			<form id="main-form" action="/hub/other-ways" method="get">
 				<div class='form-group'>
 					<button class="button">
-						Find out more on GOV.UK
+						Continue to other ways to verify
 					</button>
 				</div>
 			</form>
-				
+
 		</div>
 		{% include "includes/idp-sidebar.html" %}
 	</div>

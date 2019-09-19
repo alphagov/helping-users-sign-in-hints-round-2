@@ -10,8 +10,38 @@
   {% include "includes/available-languages.html" %}
   <div class="grid-row">
     <div class="column-two-thirds">
-  		<h1 class="heading-large">Other ways to {{serviceNameLower}}</h1>
-      
+
+      <h1 class="heading-large">{{idpName}} was unable to verify your identity</h1>
+
+        You can still {{serviceNameLower}}
+
+        <h2 class="heading-medium">Try verifying with another certified company</h2>
+        <div>
+          <p>Other companies use different methods from Experian and may therefore stand a better chance of verifying your identity.</p>
+          <a href="/hub/choose-a-company-post-fail?registration=true&liveConsent=false&failedIdp={{idpName}}">Find another company to verify you</a>
+        </div>
+
+        <h2 class="heading-medium">View other ways to check your State Pension</h2>
+        <div>
+          <h3 class="heading-small">Use Government Gateway</h3><p>Your first time will take about 10 minutes. You’ll need your National Insurance number and a recent payslip, P60 or valid UK passport.</p><p><a href="#">Prove your identity with Government Gateway</a></p>
+        <h3 class="heading-small">Contact the Future Pension Centre</h3><p>You can call or write to the <a href="https://www.gov.uk/future-pension-centre" target="_blank">the Future Pension Centre</a> and ask for a statement.</p>
+
+        </div>
+
+        <h2 class="heading-medium">Contact {{idpName}}</h2>
+        <div>
+          <h3 class="heading-small">{{idpName}} helpline</h3>
+        <p>
+          Telephone: 0344 481 8192<br>
+          Monday to Friday, 8am to 10pm<br>
+          Saturday and Sunday, 8am to 5pm<br>
+          Closed on bank holidays
+        </p>
+
+        </div>
+
+
+
       {{serviceOtherWays | safe}}
 
   	</div>
@@ -19,5 +49,3 @@
 </main>
 
 {% endblock %}
-
-

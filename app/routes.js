@@ -388,6 +388,127 @@ router.get('/hub/choose-a-company', function (req, res) {
 });
 
 
+router.get('/hub/choose-a-company-post-fail', function (req, res) {
+
+  var query = req.query;
+
+  var available_idps = [],
+      unavailable_idps = [];
+
+  var addValidCompany = function (slugs){
+    slugs = [].concat(slugs);
+    slugs.forEach(function(slug){
+      available_idps.push(
+        getIDPBySlug(slug)
+      );
+    });
+  }
+
+  var addInvalidCompany = function (slugs){
+    slugs = [].concat(slugs);
+    slugs.forEach(function(slug){
+      unavailable_idps.push(
+        getIDPBySlug(slug)
+      );
+    });
+  }
+
+  var removeValidCompany = function (slug) {
+    console.log('removeValidCompany ' + slug)
+    available_idps.forEach(function(idp, i) {
+      if (idp.slug == slug) {
+        console.log('splice ' + i)
+        available_idps.splice(i, 1);
+      }
+    });
+  }
+
+  var removeInvalidCompany = function (slug) {
+    unavailable_idps.forEach(function(idp, i) {
+      if (idp.slug == slug) {
+        unavailable_idps.splice(i, 1);
+      }
+    });
+  }
+
+  // +++ add picker logic here +++
+
+  if (query.passport == "true" || query.driving_licence == "true") {
+    // 2 docs
+    console.log("2 docs");
+
+    var tempValid = ["experian", "post-office", "digidentity", "barclays", "secureidentity" ];
+    var tempInvalid = [];
+
+    if (query.app != "true" && query.codeType == "code-text") {
+      tempValid.splice(tempValid.indexOf("secureidentity"), 1);
+      tempInvalid.push("secureidentity");
+    }
+
+    if (query.landline == "true") {
+      tempValid = ["experian"];
+      tempInvalid = ["barclays","digidentity","post-office","secureidentity",];
+    }
+
+    addValidCompany(tempValid);
+    addInvalidCompany(tempInvalid);
+
+  } else if (query.non_uk_id == "true" && query.app == "true") {
+    // 2 docs
+    console.log("2 docs");
+
+    var tempValid = ["post-office", "experian", "digidentity"];
+    var tempInvalid = [];
+
+    if (query.app != "true" && query.codeType == "code-text") {
+      tempValid.splice(tempValid.indexOf("secureidentity"), 1);
+      tempInvalid.push("secureidentity");
+    }
+
+    if (query.landline == "true") {
+      tempValid = ["experian"];
+      tempInvalid = ["barclays","digidentity","post-office","secureidentity",];
+    }
+
+    addValidCompany(tempValid);
+    addInvalidCompany(tempInvalid);
+
+  } else {
+
+    var tempValid = [ "digidentity", "post-office" ];
+    var tempInvalid = ["experian", "barclays", "secureidentity"];
+
+    addValidCompany(tempValid);
+    addInvalidCompany(tempInvalid);
+
+  }
+
+  // console.log(JSON.stringify(req.session.data['connectedIDP'], null, "  "));
+
+  // let connectedIDP = req.session.data['connectedIDP']
+
+  // // go backwards through array to remove disconnected IDPs
+  // for (let index = available_idps.length-1; index >=0; index--){
+  //   let idp = available_idps[index]
+  //   console.log(idp.slug)
+  //   if (connectedIDP.includes(idp.slug) == false){
+  //     console.log('deleting ' + idp.slug)
+  //     removeValidCompany(idp.slug)
+  //     removeInvalidCompany(idp.slug)
+  //   }
+  // }
+
+  var data = {
+    "available_idps" : available_idps,
+    "unavailable_idps" : unavailable_idps
+  };
+
+  console.log(JSON.stringify(data, null, "  "));
+
+  res.render('hub/choose-a-company-post-fail', data);
+});
+
+
 
 // Hub sign in journey routing
 

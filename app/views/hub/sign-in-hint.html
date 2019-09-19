@@ -11,7 +11,7 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
-      <h1 class="heading-large">Prove your identity to continue</h1>
+      <h1 class="heading-large">Sign in to continue</h1>
     </div>
   </div>
 
@@ -20,7 +20,8 @@
   {% if data['idpChoice'] != undefined %}
     <div class="grid-row">
       <div class="column-two-thirds">
-        <p>You’ve recently used an {{idpName}} identity account on this device.</p>
+        <p>Someone recently signed in on this device using {{idpName}}.</p>
+        <br>
       </div>
     </div>
     <div class="grid-row">
@@ -43,9 +44,9 @@
         <p style='float:left;margin-left:25px;padding-top:5px;'>
           <span>Not you?</span>
           {% if data['requestId'] == 'dbs' %}
-            <a href="/hub/eidas-interstitial">Choose another way to prove your identity</a>.
+            <a href="/hub/eidas-interstitial">Choose another way to sign in</a>.
           {% else %}
-            <a href="/hub/signin-idp-picker?registration=false">Choose another way to prove your identity</a>.
+            <a href="/hub/verify-signin-picker">Choose another way to sign in</a>.
           {% endif %}
         </p>
       </div>
