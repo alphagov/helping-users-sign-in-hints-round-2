@@ -11,23 +11,18 @@
   <div class="grid-row">
     {% include "includes/verify-logo.html" %}
     <div class="column-two-thirds">
-  		<h1 class="heading-large">Pick a company to verify you</h1>
+  		<h1 class="heading-large">Pick another company to verify you</h1>
 
-      <p>One of these companies will create your online identity account. </p>
-
-      <p>You can pick either company, although you’re less likely to be successful using a company you’ve already failed with.</p>
-
-      <p>There’s more than one so that:</p>
-      <ul class="list list-bullet">
-        <li>you can choose who verifies your identity</li>
-        <li>everyone’s information is not stored in one place</li>
-      </ul>
+      <p>One of these companies will create your online identity account.</p>
 
       <p>It usually takes 10-15 minutes, but you only have to do it once. Then you can reuse your account in the other government services that use GOV.UK Verify. </p>
 
-        {{ formData | safe }}
+      <p>You’re less likely to be successful if you choose {{data['failedIdp']}} again.</p>
 
+        {{ formData | safe }}
+        <br>
   		 <div id="company-about">
+         <!-- <h2 class="heading-small ">Recommended</h2> -->
 
         {% for idp in available_idps %}
           {% if idp.name != data['failedIdp'] %}
@@ -48,7 +43,6 @@
         {% endfor %}
 
         {% if data['failedIdp'] %}
-          <h2 class="heading-medium">Companies who couldn’t verify your identity</h2>
         {% endif %}
 
         {% for idp in available_idps %}
@@ -61,7 +55,7 @@
                 <div class="button-wrap">
                   <form method="POST" action="/hub/redirect-to-idp{{formQuery}}">
                     <input type="hidden" name="idpChoice" value="{{idp.slug}}">
-                    <button class="button">Select {{ idp.name }}</button>
+                    <button class="button button-secondary" style="margin-left:0;">Select {{ idp.name }}</button>
                   </form>
                 </div>
               </div>

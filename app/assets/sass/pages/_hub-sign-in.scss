@@ -98,7 +98,7 @@
 }
 
 .idp-choice {
-  padding: 15px 0;
+  padding: 15px 0 15px 0;
   // border-top: 1px solid $grey-1;
   border-bottom: 1px solid $grey-1;
   @extend %contain-floats;
@@ -110,7 +110,11 @@
 
     img {
       width: 67.5%;
+      padding-top: 15px;
     }
+  }
+  .idp-option{
+    float: right;
   }
 
   @include media (tablet) {
