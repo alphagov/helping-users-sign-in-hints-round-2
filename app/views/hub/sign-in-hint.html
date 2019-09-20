@@ -34,7 +34,7 @@
       <div class="column-full">
         <form method="POST" action="{{idpRoot}}/sign-in{{formQuery}}"  style='float:left;'>
           <input type="hidden" name="idpChoice" value="{{idpSlug}}">
-          <button class="button">Continue with {{ idpName }}</button>
+          <button class="button">Sign in with {{ idpName }}</button>
         </form>
 
         {% if data['requestId'] == 'dbs' %}
