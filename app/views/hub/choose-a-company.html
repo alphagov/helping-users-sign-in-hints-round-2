@@ -40,9 +40,15 @@
           <div class="idp-option">
 
             <div class="button-wrap">
-              <form method="POST" action="/hub/redirect-to-idp{{formQuery}}">
+              {% if data['liveConsent'] == 'true' %}
+                <form action="/hub/loading?">
+                  <input type="hidden" name="redirectToIdp" value="false">
+              {% else %}
+                <form action="/hub/loading">
+                  <input type="hidden" name="redirectToIdp" value="true">
+              {% endif %}
                 <input type="hidden" name="idpChoice" value="{{idp.slug}}">
-                <button class="button">Select {{ idp.name }}</button>
+                <button class="button">Continue to {{ idp.name }}</button>
               </form>
             </div>
 

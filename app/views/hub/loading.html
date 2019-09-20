@@ -6,13 +6,20 @@
 
 {% block content %}
 
+<!-- Redirect to the idp or the fail page after a timeout -->
 <script type="text/javascript">
-
   function myFunction() {
-    window.location.href = "/hub/other-ways.html";
+    {% if data['redirectToIdp'] == "true" %}
+      window.location.href = "{{idpRoot}}sign-up{{formQuery}}";
+    {% else %}
+      window.location.href = "/hub/other-ways.html";
+    {% endif %}
   }
-  setTimeout(myFunction, 9000)
-
+  {% if data['redirectToIdp'] == "true" %}
+    setTimeout(myFunction, 3000)
+  {% else %}
+    setTimeout(myFunction, 9000)
+  {% endif %}
 </script>
 
 <main id="content" role="main">

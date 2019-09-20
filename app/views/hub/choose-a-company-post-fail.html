@@ -17,8 +17,10 @@
 
       <p>It usually takes 10-15 minutes, but you only have to do it once. Then you can reuse your account in the other government services that use GOV.UK Verify. </p>
 
-      <p>You’re less likely to be successful if you choose {{data['failedIdp']}} again.</p>
+      <div class="panel panel-border-wide">
+        <p>You’re less likely to be successful if you choose {{data['failedIdp']}} again.</p>
 
+      </div>
         {{ formData | safe }}
         <br>
   		 <div id="company-about">
@@ -32,9 +34,10 @@
               </div>
               <div class="idp-option">
                 <div class="button-wrap">
-                  <form method="POST" action="/hub/redirect-to-idp{{formQuery}}">
+                  <form action="/hub/loading">
+                    <input type="hidden" name="redirectToIdp" value="true">
                     <input type="hidden" name="idpChoice" value="{{idp.slug}}">
-                    <button class="button">Select {{ idp.name }}</button>
+                    <button class="button">Continue to {{ idp.name }}</button>
                   </form>
                 </div>
               </div>
@@ -53,9 +56,10 @@
               </div>
               <div class="idp-option">
                 <div class="button-wrap">
-                  <form method="POST" action="/hub/redirect-to-idp{{formQuery}}">
+                  <form action="/hub/loading">
+                    <input type="hidden" name="redirectToIdp" value="true">
                     <input type="hidden" name="idpChoice" value="{{idp.slug}}">
-                    <button class="button button-secondary" style="margin-left:0;">Select {{ idp.name }}</button>
+                    <button class="button button-secondary" style="margin-left:0;">Continue to {{ idp.name }}</button>
                   </form>
                 </div>
               </div>
