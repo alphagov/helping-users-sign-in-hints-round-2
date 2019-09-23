@@ -38,6 +38,7 @@
         </form>
 
         {% if data['requestId'] == 'dbs' %}
+          <input type="hidden" name="userHasIdpAccount" value="true">
           <a href="/hub/eidas-interstitial" class="button-secondary">Choose another way to sign in</a>
         {% else %}
           <a href="/hub/verify-signin-picker" class="button-secondary">Choose another way to sign in</a>

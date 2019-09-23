@@ -9,18 +9,118 @@
 <main id="content" role="main">
   {% include "includes/available-languages.html" %}
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="heading-xlarge">{{serviceName}}</h1>
-
-      <p></p>
-
-      <a class="button" href="#">
-        <strong>Continue</strong>
-      </a>
+      <h1 class="heading-medium page-heading">Is this your full name, date of birth, and address?</h1>
 
 
-    </div>
+
+      <form action="" method="post" class="form" id="confirm-verify-details">
+        <div class="govuk-form-group">
+
+
+            <p>This is your name, date of birth, and address from your digital identity:</p>
+
+
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <span class="govuk-body heading-small">Name</span><br>
+            Sonja Jamarcus Beckton
+          </td>
+        </tr>
+
+
+
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <span class="govuk-body heading-small">Date of birth</span><br>
+
+
+       14 August 1990
+
+
+          </td>
+        </tr>
+
+
+
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <span class="govuk-body heading-small">Current address</span><br>
+            <p class="govuk-!-margin-bottom-0">6 Mill Lane<br>
+
+            London<br>
+
+
+              United Kingdom<br>
+
+            E9 7XQ</p>
+          </td>
+        </tr>
+
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <h2 class="heading-medium">Is this your full name, date of birth and address?</h2>
+
+          <fieldset>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="liveConsent" value="true">
+              <label for="radio-2">Yes</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="liveConsent" value="false">
+              <label for="radio-3">No</label>
+            </div>
+          </fieldset>
+        </div>
+
+
+
+      <div class="govuk-form-group">
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary help-text-link">
+            <span class="govuk-details__summary-text">This is not my full name, what should I do?</span>
+          </summary>
+          <div class="govuk-details__text">
+
+
+                <p>If the name provided is correct but it is not your full name, for example your middle name is missing, you should:</p>
+          <ol class="govuk-list govuk-list--number">
+            <li>Select 'yes' and continue</li>
+            <li>Enter the missing names on the next page of the application</li>
+          </ol>
+
+
+          </div>
+        </details>
+      </div>
+
+
+
+
+      <input type="hidden" name="_csrf" value="18uf5XCQ-FXJHAgshEpKx9a4M-Wdjawiraao">
+
+
+      <br>
+      <input type="submit" class="button" id="save-and-continue" value="Continue">
+
+
+      </form>
+
+
+            </div>
   </div>
 </main>
 
